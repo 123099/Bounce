@@ -22,7 +22,6 @@ import us.battleaxe.bounce.packets.PacketChatData;
 import us.battleaxe.bounce.packets.PacketCreator;
 import us.battleaxe.bounce.packets.PacketSender;
 import us.battleaxe.bounce.permissions.Permissions;
-import us.battleaxe.bounce.utils.Constants;
 import us.battleaxe.bounce.utils.PlayerExtension;
 
 public class SignInteractEventListener implements Listener {

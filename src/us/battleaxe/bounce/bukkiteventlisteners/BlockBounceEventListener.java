@@ -2,7 +2,7 @@ package us.battleaxe.bounce.bukkiteventlisteners;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.block.Block;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -11,10 +11,10 @@ import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.util.Vector;
 
+import net.minecraft.server.v1_8_R3.PacketPlayOutNamedSoundEffect;
 import us.battleaxe.bounce.GameStatus;
 import us.battleaxe.bounce.managers.GameManager;
 import us.battleaxe.bounce.utils.Constants;
-import us.battleaxe.bounce.utils.PlayerExtension;
 import us.battleaxe.bounce.utils.VectorExtension;
 
 public class BlockBounceEventListener implements Listener{
@@ -36,9 +36,10 @@ public class BlockBounceEventListener implements Listener{
 
 		if(GameManager.isPlayerInGame(player) && gameManager.getGameStatus() == GameStatus.InProgress) //If player is in game, the game manager attribute is never null
 		{
-			Location locationUnder = event.getTo().clone().add(0, -1, 0);
+			Location locationUnder = event.getTo().clone().add(0,-1,0);
+			Location nextLocationUnder = event.getTo().clone().add(player.getVelocity().clone().multiply(0.3)).add(0, -1, 0);
 			
-			if(isLocationSolid(locationUnder))
+			if(isLocationSolid(locationUnder) || isLocationSolid(nextLocationUnder))
 			{
 				Vector currentVelocity = player.getVelocity();
 				
@@ -53,6 +54,13 @@ public class BlockBounceEventListener implements Listener{
 					if(reflectedVelocity.length() > Constants.MaxSpeed)
 						reflectedVelocity.normalize().multiply(Constants.MaxSpeed);
 					player.setVelocity(reflectedVelocity);
+					
+					player.setFallDistance(0);
+					
+					PacketPlayOutNamedSoundEffect soundPacket = new PacketPlayOutNamedSoundEffect("mob.slime.small", player.getLocation().getX(), player.getLocation().getY(), player.getLocation().getZ(), 1, 1);
+					
+					for(Player p : gameManager.getInGamePlayers())
+						((CraftPlayer) p).getHandle().playerConnection.sendPacket(soundPacket);
 				}
 			}
 		}
