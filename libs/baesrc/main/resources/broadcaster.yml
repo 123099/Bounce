@@ -1,0 +1,12 @@
+enabled: true
+prefix: "[PREFIX]"
+interval: 12000
+in-order: true
+messages:
+  - "This"
+  - "Are"
+  - "Some"
+  - "Test"
+  - "Messages"
+  - "With"
+  - "&ccolors"

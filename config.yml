@@ -1,0 +1,18 @@
+settings:
+ min_players: 2
+ max_players: 10
+ game_start_time: 15
+ game_time: 300
+ max_speed: 15
+ points_per_kill: 10
+ sword_damage: 10
+ dash_damage: 10
+ dash_cooldown: 3
+ dash_travel_time: 2
+ dash_distance: 15
+ dash_hit_radius: 2
+ bow_name: "QuickShooter"
+ arrow_name: "One Shot Wonder"
+ sword_name: "The Half-Killer"
+ poison_potion_name: "Slow Predator"
+ death_message: "&9[&aBounce&9] &4%victim &cwas killed by &4%killer &c{%reason}"

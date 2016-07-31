@@ -1,0 +1,159 @@
+name: BAEssentials
+main: us.battleaxe.bae.BAEssentials
+version: ${project.version}
+author: dommi2212
+authors: [Warren1001]
+softdepend: [BungeeBridgeC]
+commands:
+  back:
+    description: 'Teleports to last location.'
+  bap:
+    description: 'Permission-Management'
+  day:
+    description: 'Sets the time to day.'
+  deletewarp:
+    description: 'Deletes a warp.'
+    aliases: [delwarp]
+  deop:
+    description: 'Removes a player''s operator-status.'
+  feed:
+    description: 'Feeds a player.'
+  gamemode:
+    description: 'Sets a player''s gamemode.'
+    aliases: [gm, gm0, gm1, gm2, gm3, gms, gmc, gma, gmsp]
+  gold:
+    description: 'Gold-Management'
+    aliases: [fe]
+  head:
+    description: "Gives you the head of a player."
+  heal:
+    description: 'Heals a player.'
+  hub:
+    description: 'Teleports a player back to hub.'
+  hurt:
+    description: 'Hurts a player for an amount of damage.'
+  invsee:
+    description: 'Shows and edits a player''s inventory.'
+  item:
+    description: 'Gives items to a player.'
+    aliases: [i]
+  kill:
+    description: 'Kills a player.'
+  lightning:
+    description: 'Strikes a lightning to a location or a player.'
+    aliases: [smite, shock]
+  me:
+    description: 'Broadcasts a message.'
+  message:
+    description: 'Sends a private message to player.'
+    aliases: [msg, whisper, w, tell]
+  night:
+    description: 'Sets the time to night.'
+  op:
+    description: 'Adds operator-status to a player.'
+    aliases: [operator]
+  ping:
+    description: 'Shows a player''s ping.'
+  playerdata:
+    description: 'Shows some internal information about a player.'
+    aliases: [pd,data]
+  regenerate:
+    description: 'Regenerates an amount of health for a player.'
+    aliases: [reg,regen]
+  reply:
+    description: 'Replies to an active conversation.'
+    aliases: [r, respond]
+  say:
+    description: 'Broadcasts a message from console.'
+  setwarp:
+    description: 'Creates or resets a warp.'
+  speed:
+    description: 'Sets a player''s movement-speed.'
+  starve:
+    description: 'Removes an amount of saturation from a player.'
+  sudo:
+    description: 'Sends a message or executes a command as another player.'
+  teleport:
+    description: 'Teleports a player to a location or other player.'
+    aliases: [tp]
+  teleporthere:
+    description: 'Teleports a player to you.'
+    aliases: [s, tphere, here]
+  top:
+    description: 'Teleports to the highest solid block at your current location.'
+  tpa:
+    description: 'Sends a TP-request to a player.'
+  tpaccept:
+    description: 'Accepts a TP-request.'
+  tppos:
+    description: 'Teleports to a location.'
+  warp:
+    description: 'Shows a list of warps or teleports to a warp.'
+  world:
+    description: 'Shows a list of worlds or teleports to the spawn of a world.'
+permissions:
+  #cmd.bap is excluded from cmd.*
+  cmd.bap:
+    default: false
+  cmd.back.others:
+    children:
+      cmd.back: true
+  cmd.feed.others:
+    children:
+      cmd.feed: true
+  cmd.gamemode.others:
+    children:
+      cmd.gamemode: true
+  cmd.gold.edit:
+    children:
+      cmd.gold: true
+  cmd.heal.others:
+    children:
+      cmd.heal: true
+  cmd.kill.others:
+    children:
+      cmd.kill: true
+  cmd.ping.others:
+    children:
+      cmd.ping: true
+  cmd.*:
+    children:
+      cmd.back.others: true
+      cmd.feed.others: true
+      cmd.gamemode.others: true
+      cmd.heal.others: true
+      cmd.kill.others: true
+      cmd.ping.others: true
+      cmd.warp.*: true
+      cmd.deletewarp: true
+      cmd.deop: true
+      cmd.gold: true
+      cmd.heal: true
+      cmd.hub: true
+      cmd.hurt: true
+      cmd.invsee: true
+      cmd.item: true
+      cmd.kill: true
+      cmd.lightning: true
+      cmd.me: true
+      cmd.message: true
+      cmd.night: true
+      cmd.op: true
+      cmd.playerdata: true
+      cmd.regenerate: true
+      cmd.reply: true
+      cmd.say: true
+      cmd.setwarp: true
+      cmd.speed: true
+      cmd.starve: true
+      cmd.sudo: true
+      cmd.teleport: true
+      cmd.teleporthere: true
+      cmd.top: true
+      cmd.tpa: true
+      cmd.tpaccept: true
+      cmd.tppos: true
+      cmd.world: true
+      cmd.head: true
+  bae.error-notification:
+    default: false

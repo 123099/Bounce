@@ -1,0 +1,371 @@
+# Useful unicodes:
+# \u003A Colon
+
+general:
+  no-permission: "&cYou don't have the permission to do that!"
+  disallowed-console-command: "&cYou can't use that command as console!"
+  disallowed-console-usage: "&cYou can't use that command like that as console! Usage: {0}"
+  disallowed-player-command: "&cYou can't use that command as a player!"
+  disallowed-player-usage: "&cYou can't use that command like that as a player! Usage: {0}"
+  disallowed-usage: "&cUsage: {0}"
+  synchronization-failure: "&cAn error occurred whilst synchronizing your Battleaxe-Account! This may be caused by a temporal downtime of one of our services! Please try again!"
+  player-not-online: "&cThe player {0} could not be found!"
+  not-a-number: "&c\"{0}\" is not a valid number!"
+  not-a-positive-number: "&c{0} is not a positive number!"
+  not-positive-or-zero: "&c{0} is a negative number!"
+  mysql-notify-prepare-failure: "&cAn error occurred whilst preparing to notify the other servers about your recent permission-update. This operation is independent from the MySQL-Synchronization so the synchronization may have been successful. Please check your chat for other feedback\u003A {0}"
+  mysql-notify-execute-failure: "&cAn error occurred whilst notifying the other servers about your recent permission-update. This operation is independent from the MySQL-Synchronization so the synchronization may have been successful. Please check your chat for other feedback\u003A {0}"
+  mysql-notify-check-failure: "&cAn error occurred whilst trying to check for permission-changes in the database! A second incident will lead to a shutdown of this server. Please report the following information to a developer\u003A Error whilst checking for permission-changes on server {0} at {1}."
+  mysql-notify-process-failure: "&cAn error occurred whilst processing an external permission-change from the database! A second incident will lead to a shutdown of this server. Please report the following information to a developer\u003A Error whilst processing permission-change on server {0} at {1}."
+auto-restart:
+  warning: "&7This server will restart in &6{0} {1}."
+  now: "&7Server restarting now... It will be back online shortly!"
+staffmode:
+  player-logged-off: "&cThat player logged off!"
+  staffchat: "&7[&6StaffChat&7] &6{0} &7> {1}"
+  cant-disable-over-air: "&cYou can't do that over the void!"
+spellchecker:
+  error: "&cThere was an error with the spell checker, please contact Mistri or try again."
+  corrections: |-
+    &9Potential error at column &6{0}&9: &6{1}
+    &9Suggested correction: &6{2}
+command:
+  back:
+    usage: "/back [player]"
+    no-last-location: "&cThere is no last location to teleport to!"
+    success-self: "&7Teleported to last location."
+    teleported: "&7You have been teleported to your last location by &6{0}."
+    success-other: "&7Teleported &6{0} &7to last location."
+  bap:
+    usage: "/BAP help|group|player [Args...]"
+    help:
+      general: |-
+        &6/BAP help player|group &7- Shows help for the subcommands
+        &6/BAP player <player> &7- Shows information about a player
+        &6/BAP player <player> add|remove|group [Args...] &7- See "/BAP help player"
+        &6/BAP group &7- Shows all groups and their parents
+        &6/BAP group <group> &7- Shows information about a group
+        &6/BAP group <group> add|remove|delete|create|prefix|suffix [Args...] &7- See "/BAP help group"
+      player: |-
+        &6/BAP player <player> &7- Shows information about a player
+        &6/BAP player <player> add <permission> [scope] &7- Adds a permission to a player globally or on one or more servers (Scope uses "Java regex")
+        &6/BAP player <player> remove <permission> &7- Removes a permission from a player
+        &6/BAP player group <group> &7- Sets a player's group
+      group: |-
+        &6/BAP group &7- Shows all groups and their parents
+        &6/BAP group <group> &7- Shows information about a group
+        &6/BAP group <group> add <permission> [scope] &7- Adds a permission to a group globally or on one or more servers (Scope uses "Java regex")
+        &6/BAP group <group> remove <permission> &7- Removes a permission from a group
+        &6/BAP group <group> delete &7- Deletes a group
+        &6/BAP group <group> create [parent] &7- Creates a group with the given name and a parent if set
+        &6/BAP group <group> prefix <prefix> &7- Sets a group's prefix
+        &6/BAP group <group> suffix <suffix> &7- Sets a group's suffix
+        &6/BAP group <group> parent <parent> &7- Sets a group's parent-group
+    player:
+      usage: "&cUsage\u003A /BAP player <player> OR /BAP player <player> add|remove|group <Args...>"
+      loading: "&7Loading data for offlineplayer &6{0}. &7This may take a moment..."
+      info: |-
+        &7Permission-Info for &6{0} (Id: {1}):
+        &7Has wildcard-node "*" (inherited or owned): &6{2}
+        &7Group: &6{3} &7Id: &6{4}
+        &7Owned permissions: &6{5}
+      player-fetch-failure: "&cFailed to load player-data for player {0}\u003A {1}"
+      never-joined-before: "&cThat player was never seen on the network!"
+      unknown-group: "&cThere isn't any group with that name or id!"
+      local-group-updated: "&7Updated {0}'s group to &6{1} ({2}) &7on this server! Synchronizing with MySQL..."
+      remote-group-updated: "&aSuccess!"
+      remote-group-update-failure: "&cMySQL-Synchronization failed! Please try again or the update will be lost after a restart or server-change\u003A {0}"
+      remote-group-update-prepare-failure: "&cFailed to prepare the MySQL-Synchronization. Please try again or the update will be lost after a restart or server-change\u003A {0}"
+      local-permission-added: "&7Added permission &6{0}[{1}] &7to player &6{2} &7on this server &6(Scope: {3})! &7Synchronizing with MySQL..."
+      local-permission-added-not-in-scope: "&7This server doesn't match the given scope &6({0}). &7Synchronizing with MySQL to add permission &6{1}[{2}] &7to player &6{3} &7on all scoped servers..."
+      entry-already-exists: "&cThat entry would clash with an existing entry: {0}[{1}]"
+      permission-too-long: "&cThe given permission is too long! Please choose a permission with up to 48 letters."
+      scope-too-long: "&cThe given scope is too long! Please choose a scope with up to 64 letters."
+      remote-permission-added: "&aSuccess!"
+      remote-permission-add-prepare-failure: "&cFailed to prepare the MySQL-Synchronization. Please try again or the update will be lost after a restart or server-change\u003A {0}"
+      remote-permission-add-failure: "&cMySQL-Synchronization failed! Please try again or the update will be lost after a restart or server-change\u003A {0}"
+      remote-permission-add-check-failure: "&cFailed to fetch all permission-entries to check for problematic permission-entries in the database\u003A {0}"
+      remote-permission-add-check-process-failure: "&cFailed to check for problematic permission-entries in the database\u003A {0}"
+      remote-permission-add-check-prepare-failure: "&cFailed to prepare the check for problematic permission-entries\u003A {0}"
+      entry-doesnt-exist: "&cThat permission-entry doesn't exist!"
+      local-permission-removed: "&7Removed permission &6{0}[{1}] &7from player &6{2} &7on this server! &7Synchronizing with MySQL..."
+      local-permission-removed-not-in-scope: "&7Couldn't remove the permission on this server as the server didn't match the scope of the permission. Synchronizing with MySQL to remove permission &6{0}[{1}] &7from player &6{2} &7on all scoped servers..."
+      remote-permission-removed: "&aSuccess!"
+      remote-permission-remove-failure: "&cMySQL-Synchronization failed! Please try again or the update will be lost after a restart or server-change\u003A {0}"
+      remote-permission-remove-prepare-failure: "&cFailed to prepare the MySQL-Synchronization. Please try again or the update will be lost after a restart or server-change\u003A {0}"
+      remote-permission-remove-check-failure: "&cFailed to fetch all permission-entries to check for matching permission-entries in the database\u003A {0}"
+      remote-permission-remove-check-process-failure: "&cFailed to check for matching permission-entries in the database\u003A {0}"
+      remote-permission-remove-check-prepare-failure: "&cFailed to prepare the check for matching permission-entries\u003A {0}"
+    group:
+      usage: |-
+        &cUsage: /BAP group 
+        &cOR /BAP group <group>
+        &cOR /BAP group <group> delete
+        &cOR /BAP group <group> add <permission> [scope]
+        &cOR /BAP group <group> remove <permission>
+        &cOR /BAP group <group> create [parent]
+        &cOR /BAP group <group> prefix|suffix <string>
+        &cOR /BAP group <group> parent <parent>
+      all-groups-message: "&7All registered groups:\n{0}"
+      all-groups-group: "&6{0} ({1}) &7[{2} ({3})]\n"
+      group-not-found: "&cThat group doesn't exist!"
+      cant-delete-default: "&cYou can't delete the default-group!"
+      info: |-
+        &7Permission-Info for &6{0} (Id: {1}):
+        &7Has wildcard-node "*" (inherited or owned): &6{2}
+        &7Parent: &6{3} &7Id: &6{4}
+        &7Owned permissions: &6{5}
+        &7Prefix: "&r{6}&r&7"
+        &7Suffix: "&r{7}&r&7"
+      group-already-exists: "&cThat group already exists!"
+      parent-not-found: "&cThe given parent-group doesn't exist!"
+      illegal-name: "&cThe name of a group can only contain letters and underscores!"
+      name-too-long: "&cThe given name is too long! Please choose a name with up to 16 letters."
+      creating: "&7Creating group {0} in MySQL-Database..."
+      created: "&7The group &6{0} &7has been created successfully with id &6{1} &7and parent-group &6{2} (Id: {3})!"
+      local-creation-failure: "&cFailed to retrieve the result of the operation! The group may have been created on the remote, but isn't accessible on this server\u003A {0}"
+      remote-creation-failure: "&cFailed to create the group on the remote\u003A {0}"
+      creation-prepare-failure: "&cFailed to prepare the creation of the group\u003A {0}"
+      local-group-deleted: "&7Deleted the group &6{0} (Id: {1}) &7on this server, fixed dependencies and recalculated the permissions of all players! Synchronizing with MySQL...\n&7&lIt's strongly recommended to restart all servers when the synchronization has been finished!"
+      remote-deletion-players-updated: "&7Synchronization of player-updates finished successfully!"
+      remote-deletion-group-deleted: "&7Synchronization of group-deletion finished successfully!"
+      remote-deletion-dependencies-fixed: "&7Synchronization of dependency-fixes finished successfully!"
+      remote-deletion-player-updates-failure: "&cSynchronization of player-updates failed! Please try again or there will be severe consequences\u003A {0}"
+      remote-deletion-group-deletion-failure: "&cSynchronization of group-deletion failed! Please try again or there will be severe consequences\u003A {0}"
+      remote-deletion-dependency-fixes-failure: "&cSynchronization of dependency-fixes failed! Please try again or there will be severe consequences\u003A {0}"
+      remote-deletion-prepare-failure: "&cFailed to prepare the deletion of the group on the remote. The changes have been applied on this server, but couldn't be synchronized with the database\u003A {0}"
+      prefix-too-long: "&cThe given prefix is too long! Please choose a prefix with up to 15 letters."
+      local-prefix-set: "&7Set the prefix of the group &6{0} (Id: {1}) &7to \"&r{2}&r&7\" on this server. Synchronizing with MySQL..."
+      local-prefix-reset: "&7Reset the prefix of the group &6{0} (Id: {1}) &7on this server. Synchronizing with MySQL..."
+      remote-prefix-set: "&aSuccess!"
+      remote-prefix-update-failure: "&cFailed to update the prefix on the remote. Please try again or the update will be lost after a restart or server-change\u003A {0}"
+      remote-prefix-update-prepare-failure: "&cFailed to prepare the prefix-update of the group. Please try again or the update will be lost after a restart\u003A {0}"
+      suffix-too-long: "&cThe given suffix is too long! Please choose a suffix with up to 15 letters."
+      local-suffix-set: "&7Set the suffix of the group &6{0} (Id: {1}) &7to \"&r{2}&r&7\" on this server. Synchronizing with MySQL..."
+      local-suffix-reset: "&7Reset the suffix of the group &6{0} (Id: {1}) &7on this server. Synchronizing with MySQL..."
+      remote-suffix-set: "&aSuccess!"
+      remote-suffix-update-failure: "&cFailed to update the suffix on the remote. Please try again or the update will be lost after a restart or server-change\u003A {0}"
+      remote-suffix-update-prepare-failure: "&cFailed to prepare the suffix-update of the group. Please try again or the update will be lost after a restart\u003A {0}"
+      local-permission-added: "&7Added permission &6{0}[{1}] &7to group &6{2} &7on this server &6(Scope: {3})! &7Synchronizing with MySQL..."
+      local-permission-added-not-in-scope: "&7This server doesn't match the given scope &6({0}). &7Synchronizing with MySQL to add permission &6{1}[{2}] &7to group &6{3} &7on all scoped servers..."
+      entry-already-exists: "&cThat entry would clash with an existing entry: {0}[{1}]"
+      permission-too-long: "&cThe given permission is too long! Please choose a permission with up to 48 letters."
+      scope-too-long: "&cThe given scope is too long! Please choose a scope with up to 64 letters."
+      remote-permission-added: "&aSuccess!"
+      remote-permission-add-failure: "&cMySQL-Synchronization failed! Please try again or the update will be lost after a restart\u003A {0}"
+      remote-permission-add-check-failure: "&cFailed to fetch all permission-entries to check for problematic permission-entries in the database\u003A {0}"
+      remote-permission-add-check-process-failure: "&cFailed to check for problematic permission-entries in the database\u003A {0}"
+      remote-permission-add-check-prepare-failure: "&cFailed to prepare the check for problematic permission-entries\u003A {0}"
+      entry-doesnt-exist: "&cThat permission-entry doesn't exist!"
+      local-permission-removed: "&7Removed permission &6{0}[{1}] &7from group &6{2} &7on this server! &7Synchronizing with MySQL..."
+      local-permission-removed-not-in-scope: "&7Couldn't remove the permission on this server as the server didn't match the scope of the permission. Synchronizing with MySQL to remove permission &6{0}[{1}] &7from group &6{2} &7on all scoped servers..."
+      remote-permission-removed: "&aSuccess!"
+      remote-permission-remove-failure: "&cMySQL-Synchronization failed! Please try again or the update will be lost after a restart\u003A {0}"
+      remote-permission-remove-prepare-failure: "&cFailed to prepare the MySQL-Synchronization. Please try again or the update will be lost after a restart or server-change\u003A {0}"
+      remote-permission-remove-check-failure: "&cFailed to fetch all permission-entries to check for matching permission-entries in the database\u003A {0}"
+      remote-permission-remove-check-process-failure: "&cFailed to check for matching permission-entries in the database\u003A {0}"
+      remote-permission-remove-check-prepare-failure: "&cFailed to prepare the check for matching permission-entries\u003A {0}"
+      local-parent-set: "&7Set the parent of the group &6{0} (Id: {1}) &7to &6{2} (Id: {3}) &7on this server and recalculated the permissions of all players. Synchronizing with MySQL...\n&7&lIt's strongly recommended to restart all servers when the synchronization has been finished!"
+      remote-group-set: "&aSuccess!"
+      remote-parent-set-failure: "&cMySQL-Synchronization failed! Please try again or the update will be lost after a restart\u003A {0}"
+      remote-parent-set-prepare-failure: "&cFailed to prepare the update of the parent. The changes have been applied on this server, but couldn't be synchronized with the database\u003A {0}"
+      circular-dependency: "&cYou can't make a group inherit from itself directly or indirectly!"
+      group-equals-parent: "&cA group can't be its own parent!"
+      cant-change-parent-of-default: "&cYou can't change the parent of the default-group!"
+  day:
+    usage: "/day [world]"
+    invalid-world: "&cThere isn't any world by that name!"
+    success-own: "&7Set the time to 0."
+    success-other: "&7Set the time to 0 in world &6{0}."
+  deletewarp:
+    usage: "/deletewarp <warp>"
+    unknown-warp: "&cThat warp doesn't exist!"
+    deletion-failure: "&cAn error occurred whilst writing the deletion of the warp to the warps-file!"
+    deletion-success: "&7Deleted the warp successfully."
+  deop:
+    usage: "/deop <player>"
+    success: "&6{0} &7was de-opped!"
+    not-an-op: "&cThe player {0} is not an operator!"
+  feed:
+    usage: "/feed [player]"
+    success-self: "&7You have been fed."
+    success-all: "&7You fed all players."
+    success-other: "&7You fed &6{0}."
+    target-success: "&7You have been fed by &6{0}."
+  gamemode:
+    usage: "/gamemode <0,1,2,3,s,c,a,sp,survival,creative,adventure,spectator> [player] OR /gm<0,1,2,3,s,c,a,sp> [player]"
+    success-self: "&7You set your own gamemode to &6{0}."
+    sender-success-other: "&7You set &6{0}'s &7gamemode to &6{1}."
+    target-success-other: "&7Your gamemode has been set to &6{0} &7by &6{1}."
+    invalid-gamemode: "&cThat's not a valid gamemode! Valid values: Survival, 0, s; Creative, 1, c; Adventure, 2, a; Spectator, 3, sp"
+  gold:
+    usage: "/gold OR /gold top"
+    team-usage: "/gold [player] OR /gold top OR /gold <player> give|take|set <amount>"
+    success-self: "&7[&6Gold&7] You have &6{0} &7gold."
+    help: "&7Usage: &6{0}"
+    player-loading: "&7[&6Gold&7] Loading data for offlineplayer &6{0}. &7This may take a moment..."
+    player-fetch-failure: "&c[Gold] Failed to load player-data for player {0}\u003A {1}"
+    player-never-joined-before: "&c[Gold] That player was never seen on the network!"
+    success-other: "&7[&6Gold&7] &6{0}'s &7current gold\u003A &6{1}"
+    given: "&7[&6Gold&7] You gave &6{0} {1} gold &7on this server. &7New balance\u003A &6{2}. &7Synchronizing with MySQL..."
+    target-given: "&7[&6Gold&7] You gained &6{0} gold."
+    taken: "&7[&6Gold&7] You took &6{0} gold &7from &6{1} &7on this server. &7New balance\u003A &6{2}. &7Synchronizing with MySQL..."
+    target-taken: "&7[&6Gold&7] You lost &6{0} gold."
+    set: "&7[&6Gold&7] You set &6{0}'s &7balance to &6{1} &7on this server. &7Synchronizing with MySQL..."
+    target-set: "&7[&6Gold&7] Your balance has been set to &6{0} gold."
+    remote-update-failure: "&c[Gold] MySQL-Synchronization failed! Please try again or the update will be lost after a restart or server-change\u003A {0}"
+    illegal-access: "&c[Gold] To ensure data consistency you aren't able to update the balance of players that are connected to a different server than you. Please change to the player's server or execute the update when the player is offline!"
+    error: "&c[Gold] An error occurred whilst trying to determinate some required data! Please try again!"
+    top:
+      loading: "&7Loading... Please wait a moment!"
+      header: "&7================= [&6Rich List&7] ================={0}"
+      element: "&7{0}. &6{1} &7with &6{2} gold."
+      gold-fetch-failure: "&cAn error occurred whilst fetching the five richest people from the database! Please try again later!"
+  head:
+    usage: "/head <player>"
+    success: "&7You have been given &6{0}'s &7head."
+  heal:
+    usage: "/heal [player]"
+    success-self: "&7You have been healed."
+    success-all: "&7You healed all players."
+    success-other: "&7You healed &6{0}."
+    target-success: "&7You have been healed by &6{0}."
+  hub:
+    usage: "/hub"
+    already-connected: "&cYou are already on hub!"
+    connecting: "&7Connecting you to hub..."
+    failure: "&cAn error occurred whilst connecting you to hub!"
+  hurt:
+    usage: "/hurt <damage> OR /hurt <player> <damage>"
+    success-self: "&7You damaged yourself by &6{0}."
+    success-other: "&7You damaged &6{0} &7by &6{1}."
+  invsee:
+    usage: "/invsee <player>"
+  item:
+    usage: "/item <name|id> [amount] OR /item <player> <name|id> [amount]"
+    invalid-material: "&cThere is no material with that name or id!"
+    success-self: "&7You have been given &6{0} &7* &6{1}/{2}."
+    invalid-material-or-player: "&cThere is no material with that name or id or that player isn't online!"
+    success-other: "&7You gave &6{0} {1} &7* &6{2}/{3}."
+    target-success: "&7You have been given &6{0} &7* &6{1}/{2} &7by &6{3}."
+  kill:
+    usage: "/kill [player]"
+    success-self: "&7You killed yourself."
+    target-success: "&7You have been killed by &6{0}."
+    success-other: "&7You killed &6{0}."
+  lightning:
+    usage: "/lightning [player]"
+    too-far-away: "&cThat's too far away!"
+    error-whilst-loading-chunk: "&cAn error occurred whilst trying to strike the lightning in an unloaded chunk!"
+    success-other: "&7You struck &6{0} &7with a lightning!"
+    target-success: "&7You have been struck with a lightning by &6{0}."
+  me:
+    usage: "/me <message...>"
+    format: "&7* &r{0}&7 {1} &r{2} &7{3}"
+  message:
+    usage: "/msg <player> <message...>"
+    sent: "&7[To {0}] &6{1}"
+    received: "&7[From {0}] &6{1}"
+  night:
+    usage: "/night [world]"
+    invalid-world: "&cThere isn't any world by that name!"
+    success-own: "&7Set the time to 13000."
+    success-other: "&7Set the time to 13000 in world &6{0}."
+  op:
+    usage: "/op <player>"
+    success: "&6{0} &7was opped!"
+    already-op: "&cThe player {0} already is an operator!"
+  ping:
+    usage: "/ping [player]"
+    success-self: "&7You're playing with a ping of &6{0}ms."
+    failure-self: "&cAn error occurred whilst checking your ping!"
+    success-other: "&7The player &6{0} &7is playing with a ping of &6{1}ms."
+    failure-other: "&cAn error occurred whilst checking {0}'s &7ping!"
+  playerdata:
+    usage: "/playerdata <player>"
+    player-loading: "&7Loading data for offlineplayer &6{0}. &7This may take a moment..."
+    player-fetch-failure: "&cFailed to load player-data for player {0}\u003A {1}"
+    player-never-joined-before: "&cThat player was never seen on the network!"
+    success: |-
+        &7Player-Info for &6{0} (Id: {1}):
+        &7Database-Id: &6{2}
+        &7Group: &6{3} &7Id: &6{4}
+        &7Gold: &6{5}
+        &7Server: &6{6}
+  regenerate:
+    usage: "/regenerate <health> OR /regenerate <player> <health>"
+    success-self: "&7You healed yourself by &6{0}."
+    success-other: "&7You healed &6{0} &7by &6{1}."
+    target-success: "&7You have been healed by &6{0} &7by &6{1}."
+  reply:
+    usage: "/reply <message...>"
+    recipient-not-online: "&cYou have no player to reply to!"
+  say:
+    usage: "/say <message...>"
+    success: "&7You sent a message to all online players\u003A &r{0}"
+    invalid-json: "&cThe provided JSON-Message has an invalid format! See below for details."
+  setwarp:
+    usage: "/setwarp <warpname>"
+    illegal-name: "&cIllegal name! The name of a warp can only contain alphanumeric characters and underscores!"
+    reset-failure: "&cAn error occurred whilst writing the reset of the warp {0} to your location into the warps-file!"
+    reset-success: "&7Reset the warp &6{0} &7to world &6{1}, &6X {2}, Y {3}, Z {4}, Yaw {5} and Pitch {6}!"
+    set-failure: "&cAn error occurred whilst writing the creation of the warp {0} at your location into the warps-file!"
+    set-success: "&7Created the warp &6{0} &7at world &6{1}, &6X {2}, Y {3}, Z {4}, Yaw {5} and Pitch {6}!"
+  speed:
+    usage: "/speed 0-9"
+    success: "&7You set your speed to &6{0}."
+  starve:
+    usage: "/starve <hunger> OR /starve <player> <hunger>"
+    success-self: "&7You reduced your foodlevel by &6{0}."
+    success-other: "&7You reduced &6{0}'s foodlevel &7by &6{1}."
+  sudo:
+    usage: "/sudo <player> <c:message|command>"
+    success-chat: "&7You made &6{0} &7send the message &6{1}"
+    success-command: "&7You made &6{0} &7execute the command: &6{1}"
+    slash-needed: "&cYou have to prefix commands with a slash."
+  teleport:
+    usage: "/teleport <target> OR /teleport <player> [target] OR /teleport <x> <y> <z> OR /teleport <target> <x> <y> <z>"
+    sender-teleported-to-target: "&7You have been teleported to &6{0}."
+    target-teleported-to-target: "&6{0} &7has been teleported to you."
+    sender-teleported-player-to-target: "&7You teleported &6{0} &7to &6{1}."
+    player-teleported-player-to-target: "&6You &7have been teleported to &6{0}."
+    target-teleported-player-to-target: "&6{0} &7has been teleported to &6you."
+    invalid-cords: "&cThe coordinates which you provided have an invalid format!"
+    teleported-self-to-location: "&7You have been teleported to &6{0}, {1}, {2}"
+    sender-teleported-other-to-location: "&7You teleported &6{0} &7to &6{1}, {2}, {3}"
+    target-teleported-other-to-location: "&6You &7have been teleported by &6{0} &7to &6{1}, {2}, {3}"
+  teleporthere:
+    usage: "/teleporthere <player>"
+    sender-teleported: "&7You teleported &6{0} &7to you."
+    target-teleported: "&7You have been teleported to &6{0}."
+  top:
+    usage: "/top"
+    no-block-above: "&cYou are already higher than the highest block at your current location!"
+    success: "&7Teleported to top."
+  tpa:
+    usage: "/tpa <player>"
+    already-sent: "&c{0} already has a TP-Request from you!"
+    sent: "&7You sent a TP-Request to &6{0}. {1} seconds &7left to accept."
+    received: '["",{"text":"{0}","color":"gold"},{"text":" has sent you a TP-Request. You have ","color":"gray"},{"text":"{1}","color":"gold"},{"text":" seconds to accept it.\n","color":"gray"},{"text":"[Click]","color":"green","clickEvent":{"action":"run_command","value":"/tpaccept {0}"},"hoverEvent":{"action":"show_text","value":{"text":"","extra":[{"text":"Click to accept the TP-Request from {0}.","color":"green"}]}}},{"text":" or use ","color":"gray"},{"text":"/tpaccept {0}","color":"gold"},{"text":" to accept it.","color":"gray"}]'
+  tpaccept:
+    usage: "/tpaccept <player>"
+    no-request: "&cYou don't have a TP-Request from that player. Maybe it timed out?"
+    success: "&7Teleporting &6{0} &7to you..."
+    target-success: "&6{0} &7accepted your TP-Request."
+  tppos:
+    usage: "/Tppos <x> <y> <z> OR /Tppos <x> <y> <z> <yaw> <pitch>"
+    success-xyz: "&7You have been teleported to &6{0}, {1}, {2}"
+    success-all: "&7You have been teleported to &6{0}, {1}, {2} &7with pitch &6{3} &7and yaw &6{4}"
+    invalid-cords: "&cThe coordinates which you provided have an invalid format!"
+  warp:
+    usage: "/warp [Warp]"
+    success: "&7You have been warped to &6{0}"
+    list: "&7All warps: &6{0}"
+    unknown-warp: "&cThis warp doesn't exist!"
+    invalid-world: "&cThis warp is located in an unknown world!"
+    no-permission: "&cYou don't have the permission to use that warp!"
+  world:
+    usage: "/World <World>|List"
+    list: "&7Loaded worlds\u003A &6{0}"
+    unknown-world: "&cUnknown world! Use &o/World List &cto see a list of worlds!"
+    success: "&7You were teleported to the spawn of &6{0}."

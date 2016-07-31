@@ -1,0 +1,49 @@
+mysql:
+  host: "localhost"
+  port: 3306
+  user: "User"
+  password: "Pass"
+  database: "DB"
+permission-synchronization-interval: 10
+world-separator:
+  tab: false
+  chat: false
+  deaths: false
+chat:
+  format: "{full_name} &7> "
+  player-name-hover: |-
+    &6Name: &9{name}
+    &6Gold: &9{gold}
+    &6Prefix: &9{prefix}
+hub-server: "lobby"
+teleportation-request-timeout: 120
+no-weather: true
+fallback-server: "lobby"
+tab-header: |-
+  &c&lTHE &9&lBATTLEAXE &c&lNETWORK &7&l- &6&lBATTLEAXE.US
+tab-footer: |-
+  &9&lWEBSITE: &6battleaxe.us
+  &9&lVOTE FOR 100 GOLD DAILY! &6battleaxe.us/vote
+  &9&lTWITTER: &6twitter.com/BattleaxeNet
+tab-list-handling: true
+auto-restart:
+  enabled: true
+  schedule:
+  - "15:00"
+  - "03:00"
+  warnings:
+  - "1800:mins"
+  - "1200:mins"
+  - "600:mins"
+  - "300:mins"
+  - "180:mins"
+  - "120:mins"
+  - "60:mins"
+  - "30:secs"
+  - "20:secs"
+  - "10:secs"
+  - "5:secs"
+  - "4:secs"
+  - "3:secs"
+  - "2:secs"
+  - "1:secs"

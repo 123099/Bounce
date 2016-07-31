@@ -1,0 +1,11 @@
+name: Bounce
+main: us.battleaxe.bounce.Bounce
+version: 1
+commands:
+ bounce:
+  description: Lets users with the proper permissions to control the bounce minigame plugin.
+ quit:
+  description: Quits the current game in progress.
+permissions:
+ bounce.add:
+  default: false

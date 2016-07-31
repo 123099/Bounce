@@ -1,0 +1,9 @@
+author: "Mistri"
+title: "&5Book o' Commands"
+pages:
+- "&1This is page 1"
+- "&2This is page 2"
+- |-
+  &3This is page 3
+  &3Second line
+  &3... and number 3!

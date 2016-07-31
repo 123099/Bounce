@@ -1,0 +1,10 @@
+#All warps of this server are saved in this file
+#Format
+#
+#<name>
+#   world: <world>
+#   x: <x>
+#   y: <y>
+#   z: <z>
+#   yaw: <yaw>
+#   pitch: <pitch>
