@@ -30,62 +30,42 @@ import us.battleaxe.bounce.utils.PlayerExtension;
 
 public class PlayerPvPEventListener implements Listener {
 	
-	//TODO: Awful code! Rewrite!
+	/**
+	 * Player death event:
+	 * If the player is in a Game Manager world:
+	 * 1. Clear death drops
+	 * 2. Send death message to all players in the same world
+	 * 3. If the killer is another player:
+	 * 		4. award killer points
+	 * 5. Respawn
+	 * @param event
+	 */
 	@EventHandler
-	public void onPlayerKill(PlayerDeathEvent event) {
-		event.getDrops().clear();
-		
-		if(GameManager.isPlayerInGame(event.getEntity()) && PlayerExtension.GetAttribute(GameManager.class, event.getEntity(), "GameManager").getGameStatus() != GameStatus.InProgress)
+	public void onPlayerKill(PlayerDeathEvent event) {		
+		if(GameManager.isPlayerInGame(event.getEntity()))
 		{
-			World entityWorld = event.getEntity().getWorld();
-			event.getEntity().spigot().respawn();
-			event.getEntity().teleport(entityWorld.getSpawnLocation());
-			String deathMessage = event.getDeathMessage();
+			event.getDrops().clear();
 			event.setDeathMessage("");
-			List<Player> players = GameManager.getInstanceForPlayer(event.getEntity()).getInGamePlayers();
-			for(Player player : players)
-				player.sendMessage(deathMessage);
-			return;
-		}
-		
-		Player killer = event.getEntity().getKiller();
-		if(killer == null || killer == event.getEntity())
-		{
-			if(GameManager.isPlayerInGame(event.getEntity()))
-			{
-				HashMap<String, String> replacementValues = new HashMap<>();
-				replacementValues.put(MessageFactory.DeathMessageKillerKey, "the void");
-				replacementValues.put(MessageFactory.DeathMessageVictimKey, event.getEntity().getName());
-				replacementValues.put(MessageFactory.DeathMessageReasonKey, formatDamageCause(event.getEntity().getLastDamageCause().getCause()));
-				event.setDeathMessage(MessageFactory.formatDeathMessage(Constants.DeathMessage, replacementValues));
-				event.getEntity().spigot().respawn();
-				
-				String deathMessage = event.getDeathMessage();
-				event.setDeathMessage("");
-				List<Player> players = GameManager.getInstanceForPlayer(event.getEntity()).getInGamePlayers();
-				for(Player player : players)
-					player.sendMessage(deathMessage);
-			}
-			return;
-		}
-		
-		if(GameManager.isPlayerInGame(killer) && GameManager.isPlayerInGame(event.getEntity()))
-		{
-			GameManager gameManager = PlayerExtension.GetAttribute(GameManager.class, killer, "GameManager");
-			gameManager.getScoreManager().AddScore(killer, Constants.PointsPerKill);
+			
+			Player victim = event.getEntity();
+			Player killer = victim.getKiller();
 			
 			HashMap<String, String> replacementValues = new HashMap<>();
-			replacementValues.put(MessageFactory.DeathMessageKillerKey, killer.getName());
-			replacementValues.put(MessageFactory.DeathMessageVictimKey, event.getEntity().getName());
-			replacementValues.put(MessageFactory.DeathMessageReasonKey, formatDamageCause(event.getEntity().getLastDamageCause().getCause()));
-			event.setDeathMessage(MessageFactory.formatDeathMessage(Constants.DeathMessage, replacementValues));
-			event.getEntity().spigot().respawn();
+			replacementValues.put(MessageFactory.DeathMessageKillerKey, killer == null ? "the void" : killer.getName());
+			replacementValues.put(MessageFactory.DeathMessageVictimKey, victim.getName());
+			replacementValues.put(MessageFactory.DeathMessageReasonKey, formatDamageCause(victim.getLastDamageCause().getCause()));
+			String deathMessage = MessageFactory.formatDeathMessage(Constants.DeathMessage, replacementValues);
 			
-			String deathMessage = event.getDeathMessage();
-			event.setDeathMessage("");
-			List<Player> players = GameManager.getInstanceForPlayer(event.getEntity()).getInGamePlayers();
+			List<Player> players = victim.getWorld().getPlayers();
 			for(Player player : players)
 				player.sendMessage(deathMessage);
+			
+			GameManager gameManager = GameManager.getInstanceForPlayer(victim);
+			
+			if(killer instanceof Player && killer != victim && gameManager.getGameStatus() == GameStatus.InProgress)
+				gameManager.getScoreManager().AddScore(killer, Constants.PointsPerKill);
+			
+			victim.spigot().respawn();
 		}
 	}
 	
@@ -139,6 +119,15 @@ public class PlayerPvPEventListener implements Listener {
 		}
 	}
 	
+	/**
+	 * Player respawn event:
+	 * If player is in game manager world:
+	 *  If the game is not in progress:
+	 * 	 Respawn at world spawn location
+	 *  Else
+	 *   Respawn at game spawn point
+	 * @param event
+	 */
 	@EventHandler
 	public void onPlayerRespawn(PlayerRespawnEvent event) {
 		if(GameManager.isPlayerInGame(event.getPlayer()))
@@ -149,6 +138,8 @@ public class PlayerPvPEventListener implements Listener {
 				Bukkit.getScheduler().scheduleSyncDelayedTask(Bounce.getPlugin(Bounce.class), () -> gameManager.equipPlayer(event.getPlayer()), 1);
 				event.setRespawnLocation(gameManager.getSpawnLocation());
 			}
+			else
+				event.setRespawnLocation(event.getPlayer().getWorld().getSpawnLocation());
 		}
 	}
 	
