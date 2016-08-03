@@ -25,7 +25,7 @@ public class BounceCommandAdd extends PlayerCommandExecutor {
 		}
 		
 		PlayerExtension.AddAttribute(player, "CreatingSign", args[1]);
-		player.sendMessage(Constants.PluginTag + "Right click on a sign to set it as a status sign of game world " + args[0]);
+		player.sendMessage(Constants.PluginTag + "Right click on a sign to set it as a status sign of game world " + args[1]);
 		
 		return true;
 	}
