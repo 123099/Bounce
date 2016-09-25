@@ -162,8 +162,6 @@ public class GameManager{
 		player.getInventory().addItem(instructions);
 		player.getInventory().setHeldItemSlot(0);
 		
-		player.updateInventory();
-		
 		PlayerExtension.AddAttribute(player, "GameManager", this);
 		
 		eventRaiser.raiseEvent(this, new PlayerCountChangeEvent(this, getInGamePlayerCount()));
@@ -352,6 +350,27 @@ public class GameManager{
 				HandlerList.unregisterAll(skill);
 		
 		PlayerExtension.RemoveAttribute(player, "GameManager");
+
+		ItemStack instructions = new ItemStack(Material.WRITTEN_BOOK, 1);
+		BookMeta bookMeta = (BookMeta) instructions.getItemMeta();
+		
+		bookMeta.setTitle(ChatColor.GREEN + "Instruction Manual");
+		bookMeta.setAuthor(ChatColor.GREEN + Constants.PluginName);
+		
+		String page0 = 
+				ChatColor.GREEN + "" + ChatColor.BOLD + Constants.PluginName + "\n" +
+				ChatColor.DARK_GREEN + "Bounce your way to victory!\n\n" +
+				ChatColor.DARK_AQUA + "Every kill awards you with 10 points.\n" +
+				"The bow and arrow instantly kill a player.\n" +
+				"The sword deals half a player's health in damage.\n" +
+				"Right click the sword to call forth it's true power!";
+		bookMeta.setPages(page0);
+		
+		instructions.setItemMeta(bookMeta);
+		player.getInventory().addItem(instructions);
+		player.getInventory().setHeldItemSlot(0);
+		
+		player.updateInventory();
 	}
 	
 	public void teleportPlayerOutside(Player player) {		
