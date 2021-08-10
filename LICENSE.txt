@@ -1,8 +1,7 @@
-Copyright (c) 2016 Alexey Khazov, Cristian Ionescu, Lars van Dorenvanck, Brandon van Doorn, Joran and Admir Leka.
-All Rights Not Explicitly Granted are Reserved.
+Copyright (c) 2016 Alexey Khazov developing under the Battleaxe Network. All Rights Not Explicitly Granted are Reserved.
 
-This software (SkyTime) is provided to the consumer with the following exemption:
+This software (Bounce) is provided to the Battleaxe Network (under the domain battleaxe.us) with the following exemption:
 
-  The consumer is not permitted to redistribute this software or claim it to be developed by any other than those explicitly mentioned above. Modifications may not be made unless a modding feature is included in the software by the team mentioned above with the caveat that any modification, derivative, or software that in any way links to this software is to be governed under this same license. At any time, the copyright holder reserves the right to revoke/grant privileges granted in this license for any reason.
+  The Battleaxe Network is permitted to use and modify this software freely. The software may be exhibited in any situation, including used for commercial purposes. However, the Battleaxe Network is not permitted to redistribute this software or claim it to be developed by any other than those explicitly mentioned above. Modifications may be made with the caveat that any modification, derivative, or software that in any way links to this software is to be governed under this same license. At any time, the copyright holder (the Battleaxe Network) reserves the right to revoke/grant privileges granted in this license for any reason.
 
 By continuing to exhibit, use, or profit from this software, you are agreeing to the above terms. Violation will be met with prosecution to the fullest extent of the law.
